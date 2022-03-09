@@ -608,6 +608,12 @@
     "issuer": "${OPENID_CONNECT_ISSUER}",
     "client_id": "${OPENID_CONNECT_ID}",
     "client_secret": "${OPENID_CONNECT_SECRET}",
-    "base_url": "${OPENID_CONNECT_BASEURL}"
+    "base_url": "${OPENID_CONNECT_BASEURL}",
+    "scope": ["openid", "profile"],
+    "user_properties": {
+      "displayname": {
+        "claim": "nickname"
+      }
+    }
   }
 }

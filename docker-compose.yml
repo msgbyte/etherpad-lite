@@ -6,7 +6,9 @@ services:
   etherpad-lite-dev:
     build:
       context: .
-    env_file: docker-compose.env
+    env_file:
+      - "docker-compose.env"
+      - ".env"
     image: tailchat-etherpad
     environment:
       PAD_OPTIONS_SHOW_LINE_NUMBERS: "false"
