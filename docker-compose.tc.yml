@@ -3,29 +3,24 @@
 version: "3.3"
 
 services:
-  etherpad-lite-dev:
+  etherpad-lite:
     build:
       context: .
     env_file: docker-compose.env
     image: tailchat-etherpad
     environment:
-      PAD_OPTIONS_SHOW_LINE_NUMBERS: "false"
+      DB_TYPE: mongodb
+      DB_URL: mongodb://mongo:27017/tailchat_ep
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ep.rule=PathPrefix(`/ep/`)"
       - "traefik.http.services.ep.loadbalancer.server.port=9001"
       - "traefik.http.middlewares.ep-prefix.stripprefix.prefixes=/ep/"
       - "traefik.http.routers.ep.middlewares=ep-prefix"
+    networks:
+      - tailchat
 
-  # 路由转发
-  traefik:
-    image: traefik:v2.1
-    command:
-      - "--api.insecure=true" # Don't do that in production!
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-    ports:
-      - 127.0.0.1:12000:80
-      - 127.0.0.1:12001:8080
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+networks:
+  tailchat:
+    external:
+      name: tailchat-internal

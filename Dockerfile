@@ -13,7 +13,7 @@ LABEL maintainer="Etherpad team, https://github.com/ether/etherpad-lite"
 #
 # EXAMPLE:
 #   ETHERPAD_PLUGINS="ep_codepad ep_author_neat"
-ARG ETHERPAD_PLUGINS=
+ARG ETHERPAD_PLUGINS="ep_webrtc ep_openid_connect"
 
 # Control whether abiword will be installed, enabling exports to DOC/PDF/ODT formats.
 # By default, it is not installed.
