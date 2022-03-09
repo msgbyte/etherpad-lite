@@ -594,16 +594,6 @@
    * Plugin Config Below
    * ================================================================================
    */
-  "ep_webrtc": {
-    // https://github.com/ether/ep_webrtc
-    "enabled": true,
-    "audio": {
-      "disabled": "soft"
-    },
-    "video": {
-      "disabled": "soft"
-    }
-  },
   "ep_openid_connect": {
     "issuer": "${OPENID_CONNECT_ISSUER}",
     "client_id": "${OPENID_CONNECT_ID}",
@@ -615,5 +605,9 @@
         "claim": "nickname"
       }
     }
+  },
+  "ep_image_upload": {
+    "fileTypes": ["jpeg", "jpg", "bmp", "gif", "png"],
+    "maxFileSize": 5000000
   }
 }
