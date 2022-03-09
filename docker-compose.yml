@@ -1,0 +1,29 @@
+# This Config is just for etherpad service
+
+version: "3.3"
+
+services:
+  # 应用网关
+  etherpad-lite:
+    build:
+      context: .
+      args:
+        ETHERPAD_PLUGINS: "ep_webrtc"
+    image: tailchat-etherpad
+    environment:
+      DB_TYPE: mongodb
+      DB_URL: mongodb://mongo:27017/tailchat_ep
+      PAD_OPTIONS_SHOW_LINE_NUMBERS: "false"
+    labels:
+      - "traefik.http.middlewares.ep-prefix.stripprefix.prefixes=/ep/"
+      - "traefik.enable=true"
+      - "traefik.http.routers.ep.rule=PathPrefix(`/ep/`)"
+      - "traefik.http.services.ep.loadbalancer.server.port=9001"
+      - "traefik.http.routers.ep.middlewares=ep-prefix"
+    networks:
+      - tailchat
+
+networks:
+  tailchat:
+    external:
+      name: tailchat-internal

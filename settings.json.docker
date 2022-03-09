@@ -587,5 +587,21 @@
   "loglevel": "${LOGLEVEL:INFO}",
 
   /* Override any strings found in locale directories */
-  "customLocaleStrings": {}
+  "customLocaleStrings": {},
+
+  /**
+   * ================================================================================
+   * Plugin Config Below
+   * ================================================================================
+   */
+  "ep_webrtc": {
+    // https://github.com/ether/ep_webrtc
+    "enabled": true,
+    "audio": {
+      "disabled": "soft"
+    },
+    "video": {
+      "disabled": "soft"
+    }
+  }
 }
