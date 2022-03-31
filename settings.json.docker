@@ -594,6 +594,9 @@
    * Plugin Config Below
    * ================================================================================
    */
+  "ep_user_displayname": {
+    "changeableByDefault": false
+  },
   "ep_openid_connect": {
     "issuer": "${OPENID_CONNECT_ISSUER}",
     "client_id": "${OPENID_CONNECT_ID}",
