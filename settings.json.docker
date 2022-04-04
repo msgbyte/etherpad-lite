@@ -634,5 +634,30 @@
   "customLocaleStrings": {},
 
   /* Disable Admin UI tests */
-  "enableAdminUITests": false
+  "enableAdminUITests": false,
+
+  /**
+   * ================================================================================
+   * Plugin Config Below
+   * ================================================================================
+   */
+  "ep_user_displayname": {
+    "changeableByDefault": false
+  },
+  "ep_openid_connect": {
+    "issuer": "${OPENID_CONNECT_ISSUER}",
+    "client_id": "${OPENID_CONNECT_ID}",
+    "client_secret": "${OPENID_CONNECT_SECRET}",
+    "base_url": "${OPENID_CONNECT_BASEURL}",
+    "scope": ["openid", "profile"],
+    "user_properties": {
+      "displayname": {
+        "claim": "nickname"
+      }
+    }
+  },
+  "ep_image_upload": {
+    "fileTypes": ["jpeg", "jpg", "bmp", "gif", "png"],
+    "maxFileSize": 5000000
+  }
 }
